@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">TimeSavvy</string>
+
+    <string-array name="kelas_array">
+        <item>Kelas</item>
+        <item>X</item>
+        <item>XI</item>
+        <item>XII</item>
+        <item>XIII</item>
+    </string-array>
+
+    <string-array name="jurusan_array">
+        <item>Jurusan</item>
+        <item>Otomasi</item>
+        <item>Listrik</item>
+        <item>Bangunan</item>
+        <item>Komputer</item>
+        <item>Otomotif</item>
+    </string-array>
+</resources>

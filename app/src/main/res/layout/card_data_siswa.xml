@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/cardJadwal"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/gradient_background_pressed"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+        <ImageView
+            android:id="@+id/avatarSiswa"
+            android:src="@drawable/avatar_siswa"
+            android:layout_centerVertical="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/avatarSiswa"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtNama"
+                android:gravity="start"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Alif Raditya Arifin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:maxLines="1"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/semibold"
+                android:textSize="12sp"
+                android:text="Email : alifraditya5@smk.belajar.id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/txtNisn"
+                    android:maxLines="1"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="12sp"
+                    android:text="Nisn : 22557"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginEnd="5dp"
+                    android:maxLines="1"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="12sp"
+                    android:text="|"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtTelepon"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="12sp"
+                    android:text="Telepon : 085810181436"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAlamat"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:lineHeight="19dp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/semibold"
+                android:textSize="12sp"
+                android:maxLines="2"
+                android:text="Alamat : Jalan Cipaganti Rt 50 Rw 44, Karanganyar, Jawa Tengah, 5733432"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtJurusam"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/semibold"
+                android:textSize="12sp"
+                android:maxLines="2"
+                android:text="Kelas : XII C Listrik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
