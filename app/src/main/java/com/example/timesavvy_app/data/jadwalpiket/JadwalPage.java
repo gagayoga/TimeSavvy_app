@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class JadwalPage extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private String userToken, idUser;
     private ProgressBar progressBar;
-    private MaterialButton btnJadwal;
+    private LinearLayout btnJadwal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,5 +117,10 @@ public class JadwalPage extends AppCompatActivity {
                 Toast.makeText(JadwalPage.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void refreshData(){
+        settingRecyclerView();
+        fetchDataJadwalHari();
     }
 }

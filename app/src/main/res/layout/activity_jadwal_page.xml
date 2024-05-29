@@ -54,16 +54,19 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"/>
 
-    <com.google.android.material.button.MaterialButton
+    <LinearLayout
         android:id="@+id/btnJadwal"
-        android:layout_marginVertical="30dp"
-        android:layout_marginHorizontal="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:drawableStart="@drawable/icon_add"
-        android:text="Buat Jadwal"
-        android:paddingVertical="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_margin="25dp"
+        android:background="@drawable/gradient_background"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/icon_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
 </RelativeLayout>

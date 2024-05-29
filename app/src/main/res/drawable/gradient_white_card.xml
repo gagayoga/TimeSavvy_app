@@ -3,7 +3,7 @@
     <!-- Shadow Layer -->
     <item android:left="10dp" android:right="10dp" android:top="5dp" android:bottom="5dp">
         <shape>
-            <solid android:color="@color/primary" /> <!-- Semi-transparent black for shadow -->
+            <solid android:color="@color/gray" /> <!-- Semi-transparent black for shadow -->
             <corners android:radius="10dp" />
         </shape>
     </item>
@@ -18,8 +18,8 @@
         <shape>
             <gradient
                 android:angle="45"
-                android:startColor="#5B00DF"
-                android:endColor="#9044FF"
+                android:startColor="@color/white_100"
+                android:endColor="@color/gray"
                 android:type="linear" />
             <corners android:radius="10dp"/>
         </shape>

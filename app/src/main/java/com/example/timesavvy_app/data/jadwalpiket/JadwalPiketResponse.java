@@ -35,6 +35,8 @@ public class JadwalPiketResponse {
 
     public static class Siswa {
         private int id;
+
+        private int id_pivot;
         private String email;
         private String name;
         private String nama_lengkap;
@@ -51,6 +53,13 @@ public class JadwalPiketResponse {
         public int getId() { return id; }
         public void setId(int id) { this.id = id; }
 
+        public int getId_pivot() {
+            return id_pivot;
+        }
+
+        public void setId_pivot(int id_pivot) {
+            this.id_pivot = id_pivot;
+        }
         public String getEmail() { return email; }
         public void setEmail(String email) { this.email = email; }
 
@@ -77,7 +86,6 @@ public class JadwalPiketResponse {
 
         public String getKode_pos() { return kode_pos; }
         public void setKode_pos(String kode_pos) { this.kode_pos = kode_pos; }
-
         public String getKelas() { return kelas; }
         public void setKelas(String kelas) { this.kelas = kelas; }
 

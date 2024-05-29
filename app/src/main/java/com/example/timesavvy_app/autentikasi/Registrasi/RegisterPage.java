@@ -178,7 +178,7 @@ public class RegisterPage extends AppCompatActivity {
                                     finish();
                                 }
                             })
-                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .setIcon(R.drawable.icon_success)
                             .show();
                 } else {
                     try {
@@ -237,7 +237,7 @@ public class RegisterPage extends AppCompatActivity {
                                     finish();
                                 }
                             })
-                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .setIcon(R.drawable.icon_success)
                             .show();
                 } else {
                     try {

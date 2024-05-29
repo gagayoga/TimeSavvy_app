@@ -2,7 +2,9 @@ package com.example.timesavvy_app.data.crudjadwal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,8 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.timesavvy_app.R;
+import com.example.timesavvy_app.autentikasi.Registrasi.RegisterPage;
 import com.example.timesavvy_app.data.datasemuasiswa.DataSemuaSiswa;
+import com.example.timesavvy_app.data.datasemuasiswa.DataSemuaSiswaPage;
 import com.example.timesavvy_app.data.datasemuasiswa.DataSemuaSiswaResponse;
+import com.example.timesavvy_app.data.datasiswa.DataSiswaPage;
+import com.example.timesavvy_app.data.jadwalpiket.JadwalPage;
 import com.example.timesavvy_app.data.jadwalpiket.JadwalPiketResponse;
 import com.example.timesavvy_app.data.main.MainActivity;
 import com.example.timesavvy_app.koneksi.ApiClient;
@@ -279,8 +285,23 @@ public class TambahJadwalPage extends AppCompatActivity {
                         // Post berhasil, tanggapan dari server dapat diakses di response.body()
                         TambahJadwalResponse jadwalResponse = response.body();
                         if (jadwalResponse != null) {
-                            finish();
-                            Toast.makeText(getApplicationContext(), "Tambah jadwal berhasil", Toast.LENGTH_SHORT).show();
+                            String message = "Tambah data jadwal berhasil, silakan refresh lagi untuk melihat datanya.";
+
+                            // Membuat AlertDialog
+                            new AlertDialog.Builder(TambahJadwalPage.this)
+                                    .setTitle("Tambah Jadwal Berhasil")
+                                    .setMessage(message)
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // Kembali ke halaman sebelumnya
+                                            if (getApplicationContext() instanceof DataSiswaPage) {
+                                                ((DataSiswaPage) getApplicationContext()).refreshData();
+                                            }
+                                            finish();
+                                        }
+                                    })
+                                    .setIcon(R.drawable.icon_success)
+                                    .show();
                         }
                     } else {
                         // Gagal melakukan post, tanggapan dari server dapat diakses di response.errorBody()
@@ -322,8 +343,21 @@ public class TambahJadwalPage extends AppCompatActivity {
                 public void onResponse(Call<EditJadwalResponse> call, Response<EditJadwalResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         EditJadwalResponse editJadwalResponse = response.body();
-                        Toast.makeText(getApplicationContext(), editJadwalResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        finish(); // Tutup aktivitas setelah berhasil mengedit jadwal
+                        String message = "Pembaruan data jadwal berhasil di perbarui.";
+                        new android.app.AlertDialog.Builder(TambahJadwalPage.this)
+                                .setTitle("Pembaruan Data Jadwal")
+                                .setMessage(message)
+                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Refresh data in the previous activity if needed
+                                        if (getApplicationContext() instanceof JadwalPage) {
+                                            ((JadwalPage) getApplicationContext()).refreshData();
+                                        }
+                                        finish();
+                                    }
+                                })
+                                .setIcon(R.drawable.icon_success)
+                                .show();
                     } else {
                         Toast.makeText(TambahJadwalPage.this, "Gagal mengedit jadwal", Toast.LENGTH_SHORT).show();
                     }

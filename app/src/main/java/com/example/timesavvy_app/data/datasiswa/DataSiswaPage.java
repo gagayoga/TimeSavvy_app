@@ -43,6 +43,7 @@ public class DataSiswaPage extends AppCompatActivity {
     private RelativeLayout cardDataKosong;
     private SwipeRefreshLayout swipeRefreshLayout;
     private int idHari;
+    private static final int REQUEST_CODE_TAMBAH_JADWAL = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,5 +147,19 @@ public class DataSiswaPage extends AppCompatActivity {
                 Toast.makeText(DataSiswaPage.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void refreshData(){
+        settingRecyclerView();
+        fetchDataSiswa(idHari);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_TAMBAH_JADWAL && resultCode == RESULT_OK) {
+            // Refresh data
+            refreshData();
+        }
     }
 }

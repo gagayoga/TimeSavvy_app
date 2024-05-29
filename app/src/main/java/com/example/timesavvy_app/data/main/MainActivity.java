@@ -3,6 +3,7 @@ package com.example.timesavvy_app.data.main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,9 +15,11 @@ import android.widget.Toast;
 
 import com.example.timesavvy_app.R;
 import com.example.timesavvy_app.autentikasi.Login.LoginPage;
+import com.example.timesavvy_app.data.crudjadwal.TambahJadwalPage;
 import com.example.timesavvy_app.data.datasemuasiswa.DataSemuaSiswa;
 import com.example.timesavvy_app.data.datasemuasiswa.DataSemuaSiswaPage;
 import com.example.timesavvy_app.data.jadwalpiket.JadwalPage;
+import com.example.timesavvy_app.data.splashscreen.SplashscreenPage;
 import com.example.timesavvy_app.koneksi.ApiClient;
 import com.example.timesavvy_app.koneksi.UserServices;
 
@@ -123,11 +126,21 @@ public class MainActivity extends AppCompatActivity {
                     editor.clear();
                     editor.apply();
 
-                    Toast.makeText(getApplicationContext(), "Logout berhasil, silakan login kembali", Toast.LENGTH_SHORT).show();
-                    // Redirect to login activity
-                    Intent intentLogout = new Intent(MainActivity.this, LoginPage.class);
-                    startActivity(intentLogout);
-                    finish();
+                    String message = "Logout berhasil, silakan login kembali";
+                    new android.app.AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Pemberitahuan")
+                            .setMessage(message)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Redirect to login activity
+                                    Intent intentLogout = new Intent(MainActivity.this, SplashscreenPage.class);
+                                    startActivity(intentLogout);
+                                    finish();
+                                }
+                            })
+                            .setIcon(R.drawable.icon_success)
+                            .show();
+
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to logout: " + response.message(), Toast.LENGTH_SHORT).show();
                 }

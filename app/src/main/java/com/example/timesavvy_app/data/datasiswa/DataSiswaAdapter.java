@@ -1,6 +1,7 @@
 package com.example.timesavvy_app.data.datasiswa;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -74,13 +75,13 @@ public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.Sisw
         // Check if current student's data matches user's data
         if (emailUser.equals(siswa.getEmail())) {
             // Set background to gradient_background if data matches
-            holder.cardJadwal.setBackgroundResource(R.drawable.gradient_white_card);
-            holder.txtNama.setTextColor(Color.WHITE);
-            holder.txtEmail.setTextColor(Color.WHITE);
-            holder.txtNisn.setTextColor(Color.WHITE);
-            holder.txtTelepon.setTextColor(Color.WHITE);
-            holder.txtAlamat.setTextColor(Color.WHITE);
-            holder.txtJurusan.setTextColor(Color.WHITE);
+            holder.cardJadwal.setBackgroundResource(R.drawable.gradient_background_pressed);
+            holder.txtNama.setTextColor(R.color.primary);
+            holder.txtEmail.setTextColor(R.color.primary);
+            holder.txtNisn.setTextColor(R.color.primary);
+            holder.txtTelepon.setTextColor(R.color.primary);
+            holder.txtAlamat.setTextColor(R.color.primary);
+            holder.txtJurusan.setTextColor(R.color.primary);
             holder.avatar.setImageResource(R.drawable.avatar1);
         } else {
             // Set default background color
@@ -139,14 +140,14 @@ public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.Sisw
                 + "NISN : " + siswa.getNisn() + "\n"
                 + "Telepon : " + siswa.getNo_hp() + "\n"
                 + "Alamat : " + siswa.getAlamat() + ", " + siswa.getKota() + ", " + siswa.getProvinsi() + ", " + siswa.getKode_pos() + "\n"
-                + "Kelas : " + siswa.getKelas() + " " + siswa.getJurusan()).toUpperCase();
+                + "Kelas : " + siswa.getKelas() + " " + siswa.getJurusan());
 
         dataSiswaTextView.setText(siswaData);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteUser(siswa.getId(), alertDialog, siswa.getNama_lengkap());
+                deleteUser(siswa.getId_pivot(), alertDialog, siswa.getNama_lengkap());
             }
         });
 
@@ -166,6 +167,7 @@ public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.Sisw
 
                 // Start the activity
                 context.startActivity(intent);
+                alertDialog.dismiss();
             }
         });
 
@@ -181,12 +183,21 @@ public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.Sisw
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(context, "Delete jadwal dengan siswa " + namaLengkap + " Berhasil.", Toast.LENGTH_SHORT).show();
-                    // Refresh the data in the activity
-                    if (context instanceof DataSemuaSiswaPage) {
-                        ((DataSemuaSiswaPage) context).refreshData();
-                    }
-                    alertDialog.dismiss();
+                    String message = "Hapus data siswa atas nama " + namaLengkap + " berhasil di hapus.";
+                    new android.app.AlertDialog.Builder(context)
+                            .setTitle("Hapus Data Siswa")
+                            .setMessage(message)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Refresh data in the previous activity if needed
+                                    if (context instanceof DataSiswaPage) {
+                                        ((DataSiswaPage) context).refreshData();
+                                    }
+                                    alertDialog.dismiss();
+                                }
+                            })
+                            .setIcon(R.drawable.icon_success)
+                            .show();
                 } else {
                     Toast.makeText(context, "Failed to delete user: " + response.message(), Toast.LENGTH_SHORT).show();
                     Log.e("DELETE_USER", "Failed to delete user: " + response.message());

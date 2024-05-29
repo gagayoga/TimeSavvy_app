@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class DataSemuaSiswaPage extends AppCompatActivity {
     private RelativeLayout cardDataKosong;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<DataSemuaSiswa> userList;
-    private FloatingActionButton fabUser;
+    private LinearLayout fabUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

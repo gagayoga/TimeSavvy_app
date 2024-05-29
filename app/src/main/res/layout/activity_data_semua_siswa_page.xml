@@ -81,16 +81,20 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <LinearLayout
+            android:id="@+id/floatingUser"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="30dp"
+            android:layout_margin="25dp"
+            android:background="@drawable/gradient_background"
             android:layout_width="60dp"
-            android:id="@+id/floatingUser"
-            app:backgroundTint="@color/white"
-            android:src="@drawable/icon_add"
-            android:layout_height="60dp"/>
+            android:layout_height="60dp">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
