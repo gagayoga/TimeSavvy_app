@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private SharedPreferences sharedPreferences;
-    private RelativeLayout cardJadwal, cardSiswa, cardLogout;
+    private LinearLayout cardJadwal, cardSiswa;
+    private RelativeLayout cardLogout;
     private String userToken, idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
